@@ -31,7 +31,7 @@ SIGNOS = {
     "virgo":   {"nombre": "Virgo",   "elemento": "tierra", "fechas": "23 ago - 22 sep"},
 }
 CLASES = {clave: s["nombre"] for clave, s in SIGNOS.items()}
-META_POR_CLASE = 500   # minimo  por la práctica
+META_POR_CLASE = 800   # minimo  por la práctica
 LADO = 200             # lienzo de 200x200 px 
 
 DATA_DIR = (
