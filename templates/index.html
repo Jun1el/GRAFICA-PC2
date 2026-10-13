@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Zodiaco a mano alzada</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='estilo.css') }}">
+</head>
+<body data-elemento="fuego">
+  <header class="cabecera">
+    <p class="marca">Zodiaco a mano alzada</p>
+    <label class="autor">
+      <span>¿Quién dibuja?</span>
+      <input id="autor" type="text" maxlength="20" placeholder="Tu nombre" autocomplete="nickname">
+    </label>
+  </header>
+
+  <main class="mesa">
+    <section class="pedido" aria-live="polite">
+      <p class="pedido-intro">Dibuja el signo de</p>
+      <h1 class="titulo"><span id="nombre-signo">…</span></h1>
+      <p id="datos-signo" class="datos-signo"></p>
+
+      <figure class="referencia">
+        <div class="medallon">
+          {% for clave in clases %}
+          <div class="glifo" data-clase="{{ clave }}" role="img"
+               aria-label="Símbolo de {{ clases[clave] }}" hidden>{{ referencias[clave] | safe }}</div>
+          {% endfor %}
+        </div>
+        <figcaption>Este es el símbolo. Dibújalo con tu propio trazo, no tiene que quedar perfecto.</figcaption>
+      </figure>
+    </section>
+
+    <section class="taller">
+      <div class="lienzo-marco">
+        <canvas id="lienzo" width="{{ lado }}" height="{{ lado }}"
+                aria-label="Recuadro para dibujar"></canvas>
+        <p id="lienzo-vacio" class="lienzo-vacio">Dibuja aquí</p>
+      </div>
+      <div class="acciones">
+        <button id="btn-borrar" type="button" class="btn">Borrar</button>
+        <button id="btn-cambiar" type="button" class="btn">Otro signo</button>
+        <button id="btn-guardar" type="button" class="btn btn-principal">Guardar dibujo</button>
+      </div>
+      <p class="atajos">Enter guarda, Esc borra.</p>
+      <div id="aviso" class="aviso" role="status" hidden>
+        <span id="aviso-texto"></span>
+        <button id="btn-deshacer" type="button" class="enlace" hidden>Deshacer</button>
+      </div>
+    </section>
+  </main>
+
+  <section class="avance" aria-labelledby="titulo-avance">
+    <div class="avance-cabecera">
+      <h2 id="titulo-avance">Avance del equipo</h2>
+      <p id="total" class="total"></p>
+    </div>
+    <ul class="signos">
+      {% for clave, s in signos.items() %}
+      <li class="signo" data-clase="{{ clave }}" data-elemento="{{ s.elemento }}">
+        <span class="signo-glifo" aria-hidden="true">{{ referencias[clave] | safe }}</span>
+        <span class="signo-nombre">{{ s.nombre }}</span>
+        <span class="signo-cuenta"><b>0</b> / {{ meta }}</span>
+        <span class="signo-linea"><span class="signo-relleno"></span></span>
+      </li>
+      {% endfor %}
+    </ul>
+    <p class="descarga">
+      <a href="{{ url_for('descargar_zip') }}">Descargar todos los dibujos (.zip)</a>
+    </p>
+  </section>
+
+  <script>
+    window.ZODIACO = {
+      signos: {{ signos | tojson }},
+      meta: {{ meta }}
+    };
+  </script>
+  <script src="{{ url_for('static', filename='dibujo.js') }}"></script>
+</body>
+</html>
