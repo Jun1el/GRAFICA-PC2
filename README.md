@@ -3,7 +3,7 @@
 Práctica Calificada 2 de Computación Gráfica. Partimos de la app de clase que
 recolecta dibujos de las letras U, N e I
 ([PeterTXS09/letras_uni](https://github.com/PeterTXS09/letras_uni)), y la
-adaptamos para reconocer los símbolos de los 6 primeros signos del zodiaco
+adaptamos para reconocer los símbolos de 6 signos del zodiaco
 dibujados a mano alzada:
 
 | Clase | Símbolo | Carpeta |
@@ -13,9 +13,9 @@ dibujados a mano alzada:
 | Géminis | ♊ | `data/geminis/` |
 | Cáncer | ♋ | `data/cancer/` |
 | Leo | ♌ | `data/leo/` |
-| Virgo | ♍ | `data/virgo/` |
+| Acuario | ♒ | `data/acuario/` |
 
-Meta: 500 dibujos por clase (3000 en total).
+Meta: 800 dibujos por clase (4800 en total).
 
 ## Integrantes
 

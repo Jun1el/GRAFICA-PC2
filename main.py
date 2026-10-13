@@ -21,14 +21,14 @@ from PIL import Image
 
 app = Flask(__name__)
 
-# Los 6 primeros signos del zodiaco: carpeta -> datos que se muestran
+# Signos del zodiaco: carpeta -> datos que se muestran
 SIGNOS = {
     "aries":   {"nombre": "Aries",   "elemento": "fuego",  "fechas": "21 mar - 19 abr"},
     "tauro":   {"nombre": "Tauro",   "elemento": "tierra", "fechas": "20 abr - 20 may"},
     "geminis": {"nombre": "Géminis", "elemento": "aire",   "fechas": "21 may - 20 jun"},
     "cancer":  {"nombre": "Cáncer",  "elemento": "agua",   "fechas": "21 jun - 22 jul"},
     "leo":     {"nombre": "Leo",     "elemento": "fuego",  "fechas": "23 jul - 22 ago"},
-    "virgo":   {"nombre": "Virgo",   "elemento": "tierra", "fechas": "23 ago - 22 sep"},
+    "acuario": {"nombre": "Acuario", "elemento": "aire",   "fechas": "20 ene - 18 feb"},
 }
 CLASES = {clave: s["nombre"] for clave, s in SIGNOS.items()}
 META_POR_CLASE = 800   # minimo  por la práctica
